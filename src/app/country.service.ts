@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ constructor(
   private http: HttpClient
 ) { }
   private countryUrl = 'https://restcountries.eu/rest/v2/name/';
-  country: object;
+  country;
 
   getCountryInformation(country: string) {
     const url = `${this.countryUrl}${country}`;
@@ -21,7 +22,7 @@ constructor(
       return this.country;
     });
   }
-  getCountry() {
+  getCountry(): Observable<any> {
     return this.country;
   }
 

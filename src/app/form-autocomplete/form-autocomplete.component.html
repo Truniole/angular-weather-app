@@ -1,22 +1,22 @@
-<form class="example-form">
+<form class="example-form" (ngSubmit)="onSubmit(country.value)">
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Country name i.e: Finland..." aria-label="Country" [matAutocomplete]="auto" [formControl]="countryCtrl">
+    <input #country matInput placeholder="Country name i.e: Finland..." aria-label="Country" [matAutocomplete]="auto" [formControl]="countryCtrl" type="text">
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
       <mat-option *ngFor="let country of filteredCountries | async" [value]="country.name">
         <span>{{country.name}}</span>
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-
   <br>
-
+  <button class="button" type="submit">Submit</button>
+  
   <!-- <mat-slide-toggle
     [checked]="stateCtrl.disabled"
     (change)="stateCtrl.disabled ? stateCtrl.enable() : stateCtrl.disable()">
     Disable Input?
   </mat-slide-toggle> -->
+  
 </form>
-
 
 <!-- Copyright 2019 Google Inc. All Rights Reserved.
     Use of this source code is governed by an MIT-style license that

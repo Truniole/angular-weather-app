@@ -2,9 +2,9 @@ import { WeatherService } from '../weather.service';
 import { CountryService } from '../country.service';
 import { countries } from '../../countries';
 import {Component, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormBuilder} from '@angular/forms';
 import {Observable} from 'rxjs';
-import {map, startWith} from 'rxjs/operators';
+import {map, startWith, count} from 'rxjs/operators';
 
 export interface Countries {
   name: string;
@@ -21,9 +21,11 @@ export class FormAutocompleteComponent implements OnInit {
   filteredCountries: Observable<Countries[]>;
   countries: Countries[] = countries;
   country: object;
+  submitForm;
   constructor(
     private countryService: CountryService,
     private weatherService: WeatherService,
+    private formBuilder: FormBuilder,
   ) {
     this.filteredCountries = this.countryCtrl.valueChanges
       .pipe(
@@ -33,15 +35,15 @@ export class FormAutocompleteComponent implements OnInit {
   }
   private _filterCountries(value: string): Countries[] {
     const filterValue = value.toLowerCase();
-
     return this.countries.filter(country => country.name.toLowerCase().indexOf(filterValue) === 0);
   }
-  onSubmit() {
-    this.countryService.getCountryInformation('Finland');
+  onSubmit(country) {
+    console.log(country);
+    this.countryService.getCountryInformation(country);
   }
   ngOnInit() {
-    this.countryService.getCountryInformation('Finland');
-    this.country = this.countryService.getCountry();
-
+    this.submitForm = this.formBuilder.group({
+      name: '',
+    });
   }
 }
