@@ -19,8 +19,8 @@ export class FormAutocompleteComponent implements OnInit {
   countryCtrl = new FormControl();
   filteredCountries: Observable<Countries[]>;
   countries: Countries[] = countries;
-  country: object;
   submitForm;
+
   constructor(
     private countryService: CountryService,
     private formBuilder: FormBuilder,
@@ -38,6 +38,7 @@ export class FormAutocompleteComponent implements OnInit {
   onSubmit(country) {
     console.log(country);
     this.countryService.getCountryInformation(country);
+    this.countryService.getWeatherInformation(country);
   }
   ngOnInit() {
     this.submitForm = this.formBuilder.group({
