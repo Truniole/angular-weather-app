@@ -17,6 +17,10 @@ export interface Countries {
 })
 
 export class FormAutocompleteComponent implements OnInit {
+  countryCtrl = new FormControl();
+  filteredCountries: Observable<Countries[]>;
+  countries: Countries[] = countries;
+  country: object;
   constructor(
     private countryService: CountryService,
     private weatherService: WeatherService,
@@ -27,23 +31,17 @@ export class FormAutocompleteComponent implements OnInit {
         map(country => country ? this._filterCountries(country) : this.countries.slice())
       );
   }
-  countryCtrl = new FormControl();
-  filteredCountries: Observable<Countries[]>;
-  countries: Countries[] = countries;
-  response;
   private _filterCountries(value: string): Countries[] {
     const filterValue = value.toLowerCase();
 
     return this.countries.filter(country => country.name.toLowerCase().indexOf(filterValue) === 0);
   }
+  onSubmit() {
+    this.countryService.getCountryInformation('Finland');
+  }
   ngOnInit() {
-    this.countryService.getCountryInformation('Finland').subscribe(data => {
-      this.response = data[0];
-      console.log(this.response);
-      console.log(this.response.capital);
-    });
-    console.log(this.weatherService.getCapitalWeather('Helsinki').subscribe(data => {
-      console.log(data);
-    }));
+    this.countryService.getCountryInformation('Finland');
+    this.country = this.countryService.getCountry();
+
   }
 }

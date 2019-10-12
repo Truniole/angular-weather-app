@@ -1,3 +1,4 @@
+import { WeatherInfoComponent } from './weather-info/weather-info.component';
 import { FormAutocompleteComponent } from './form-autocomplete/form-autocomplete.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -11,6 +12,7 @@ import { AppComponent } from './app.component';
   declarations: [
     AppComponent,
     FormAutocompleteComponent,
+    WeatherInfoComponent,
   ],
   imports: [
     BrowserModule,

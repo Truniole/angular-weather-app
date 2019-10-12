@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +9,20 @@ export class CountryService {
 constructor(
   private http: HttpClient
 ) { }
+  private countryUrl = 'https://restcountries.eu/rest/v2/name/';
+  country: object;
 
   getCountryInformation(country: string) {
-    return this.http.get('https://restcountries.eu/rest/v2/name/' + country);
+    const url = `${this.countryUrl}${country}`;
+    console.log(url);
+    this.http.get(url).subscribe(data => {
+      this.country = data[0];
+      console.log(this.country);
+      return this.country;
+    });
   }
+  getCountry() {
+    return this.country;
+  }
+
 }
