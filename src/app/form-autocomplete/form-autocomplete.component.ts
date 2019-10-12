@@ -1,4 +1,3 @@
-import { WeatherService } from '../weather.service';
 import { CountryService } from '../country.service';
 import { countries } from '../../countries';
 import {Component, OnInit} from '@angular/core';
@@ -24,7 +23,6 @@ export class FormAutocompleteComponent implements OnInit {
   submitForm;
   constructor(
     private countryService: CountryService,
-    private weatherService: WeatherService,
     private formBuilder: FormBuilder,
   ) {
     this.filteredCountries = this.countryCtrl.valueChanges

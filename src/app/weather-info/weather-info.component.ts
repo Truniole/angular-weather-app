@@ -1,5 +1,4 @@
 import { CountryService } from './../country.service';
-import { WeatherService } from './../weather.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 export class WeatherInfoComponent implements OnInit {
 
   constructor(
-    private weatherService: WeatherService,
     private countryService: CountryService,
   ) { }
   ngOnInit() {
