@@ -1,13 +1,13 @@
 <div class="country-info">
   <div class="card card-stats">
       <div class="card-header">
-          <h3 class="card-category">Location: {{countryService.country.name}}</h3>
-          <h3 class="card-title"><small>Capital: </small>{{countryService.country.capital}}
+          <h3 class="card-category">Location: {{countryService.country ? countryService.country.name : '--' }}</h3>
+          <h3 class="card-title"><small>Capital: </small>{{countryService.country ? countryService.country.capital : '--'}}
           </h3>
       </div>
       <div class="card-footer">
           <div class="stats">
-              <p>Region: {{countryService.country.subregion}}</p>
+              <p>Region: {{countryService.country ? countryService.country.subregion : '--'}}</p>
           </div>
       </div>
   </div>
