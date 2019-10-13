@@ -5,12 +5,9 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class CountryService {
-constructor(
-  private http: HttpClient
-) { }
+constructor(private http: HttpClient) { }
   country;
   weather;
-
   private countryUrl = 'https://restcountries.eu/rest/v2/name/';
   private weatherUrl = 'http://api.weatherstack.com/current';
   private weatherApiKey = 'b34fd393762769b642061a491ab7b5b4';
