@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CountryComponentComponent implements OnInit {
   constructor(
-    private countryService: CountryService
+    public countryService: CountryService
   ) { }
 
   ngOnInit() {

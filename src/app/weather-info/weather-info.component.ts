@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class WeatherInfoComponent implements OnInit {
 
   constructor(
-    private countryService: CountryService,
+    public countryService: CountryService,
   ) { }
 
   ngOnInit() {
