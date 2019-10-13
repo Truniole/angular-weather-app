@@ -1,5 +1,17 @@
 <div class="weather-info" *ngIf="countryService.weather">
-  <h1>Current Temp: {{countryService.weather.current.temperature}}</h1>
+  <!-- <h1>Current Temp: {{countryService.weather.current.temperature}}</h1>
   <h3>{{countryService.weather.current.weather_descriptions[0]}}</h3>
-  <h1>Feels like: {{countryService.weather.current.feelslike}}</h1>
+  <h1>Feels like: {{countryService.weather.current.feelslike}}</h1> -->
+          <div class="card card-stats">
+              <div class="card-header">
+                  <h3 class="card-category">Current Temp: {{countryService.weather.current.temperature}}</h3>
+                  <h3 class="card-title"><small>Feels like: </small>{{countryService.weather.current.feelslike}}
+                  </h3>
+              </div>
+              <div class="card-footer">
+                  <div class="stats">
+                      <p>{{countryService.weather.current.weather_descriptions[0]}}</p>
+                  </div>
+              </div>
+          </div>
 </div>

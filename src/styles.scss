@@ -1,10 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import "~bootstrap/scss/bootstrap";
 
 body { 
   font-family: Roboto, Arial, sans-serif;
   margin: 0;
+  background-color: #eee;
 }
 
 .basic-container {
@@ -17,7 +19,7 @@ body {
 }
 .example-form {
   min-width: 150px;
-  max-width: 500px;
+  max-width: 100%;
   width: 100%;
 }
 

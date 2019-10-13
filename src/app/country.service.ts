@@ -8,7 +8,6 @@ export class CountryService {
 constructor(
   private http: HttpClient
 ) { }
-  // tslint:disable-next-line: ban-types
   country;
   weather;
 
@@ -18,9 +17,6 @@ constructor(
 
   getCountryInformation(country: string) {
     const countryURL = `${this.countryUrl}${country}`;
-    const weatherURL = `${this.weatherUrl}?access_key=${this.weatherApiKey}&query=${country}`;
-    console.log(countryURL);
-    console.log(weatherURL);
     this.http.get(countryURL).subscribe(
       data => this.country = data[0],
       error => console.error('Country api call not working', error)
@@ -32,8 +28,6 @@ constructor(
     this.http.get(weatherURL).subscribe(
       data => {
         this.weather = data;
-        console.log(this.weather);
-        console.log(this.weather.current.temperature);
       },
       error => console.error('Weather api call not working', error)
     );
