@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +9,8 @@ constructor(
   private http: HttpClient
 ) { }
   // tslint:disable-next-line: ban-types
-  country: object;
-  weather: object;
+  country;
+  weather;
 
   private countryUrl = 'https://restcountries.eu/rest/v2/name/';
   private weatherUrl = 'http://api.weatherstack.com/current';
@@ -33,9 +31,9 @@ constructor(
     console.log(weatherURL);
     this.http.get(weatherURL).subscribe(
       data => {
-        console.log(JSON.stringify(data));
         this.weather = data;
         console.log(this.weather);
+        console.log(this.weather.current.temperature);
       },
       error => console.error('Weather api call not working', error)
     );

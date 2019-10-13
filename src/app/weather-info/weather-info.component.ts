@@ -11,6 +11,7 @@ export class WeatherInfoComponent implements OnInit {
   constructor(
     private countryService: CountryService,
   ) { }
+  
   ngOnInit() {
   }
 

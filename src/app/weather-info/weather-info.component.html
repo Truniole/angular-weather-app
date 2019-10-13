@@ -1,3 +1,5 @@
-<p>
-  weather-info works!
-</p>
+<div class="weather-info" *ngIf="countryService.weather">
+  <h1>Current Temp: {{countryService.weather.current.temperature}}</h1>
+  <h3>{{countryService.weather.current.weather_descriptions[0]}}</h3>
+  <h1>Feels like: {{countryService.weather.current.feelslike}}</h1>
+</div>
